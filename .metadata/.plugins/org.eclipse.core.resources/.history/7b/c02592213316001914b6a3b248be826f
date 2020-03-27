@@ -1,0 +1,14 @@
+package com.bucea.service;
+
+import com.bucea.bean.Employee;
+
+public interface IManService {
+	//增加员工信息
+	public void empAdd(Employee emp);
+	//删除员工信息
+	public void empDelete(int id);
+	//查找员工信息
+	public Employee empFind(int id);
+	//修改员工信息
+	public void empUpdate(Employee emp);
+}

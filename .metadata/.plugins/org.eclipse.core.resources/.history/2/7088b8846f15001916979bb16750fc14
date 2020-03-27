@@ -1,0 +1,10 @@
+package com.bucea.dao;
+
+import com.bucea.bean.Employee;
+
+public interface IManDao {
+	public void employeeAdd(Employee emp);
+	public void employeeDelete(int id);
+	public Employee employeeFind(int id);
+	public void employeeUpdate(Employee emp);
+}

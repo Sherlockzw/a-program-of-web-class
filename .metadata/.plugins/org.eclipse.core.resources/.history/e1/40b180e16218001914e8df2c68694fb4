@@ -1,0 +1,5 @@
+package com.bucea.bean;
+
+public class Limit {
+
+}

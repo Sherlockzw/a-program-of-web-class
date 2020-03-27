@@ -1,0 +1,60 @@
+package com.bucea.servlet;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.bucea.bean.Employee;
+import com.bucea.service.CheckService;
+import com.bucea.service.impl.ICheckService;
+import com.bucea.util.WebUtils;
+
+public class LoginServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	CheckService checkService = new ICheckService();
+	public LoginServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		Object uri = null;
+		int username = Integer.parseInt(request.getParameter("username"));
+		String password = request.getParameter("password");
+		Employee employee = checkService.login(username);
+		if(employee != null) {
+			String dbpassword = employee.getPassword();
+			int li_id = employee.getLi_id();//��ȡ�û�Ȩ��
+			System.out.println(li_id);
+			if(password.equals(dbpassword)) {
+				request.getSession().setAttribute("employee", employee);
+				if(li_id == 1) {
+					uri = request.getRequestDispatcher("employee/employee.jsp");
+				}else if(li_id == 2) {
+					uri = request.getRequestDispatcher("manage/manage.jsp");
+				}else if(li_id == 3) {
+					uri = request.getRequestDispatcher("admin/admin.jsp");
+				}
+			}
+			else {
+				uri = "/fail.jsp";
+			}
+		}else {
+			uri = "/fail.jsp";
+		}
+		try {
+			WebUtils.goTo(request, response, uri);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+
+}

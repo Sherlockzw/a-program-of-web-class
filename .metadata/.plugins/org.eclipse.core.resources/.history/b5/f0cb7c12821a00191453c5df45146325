@@ -1,0 +1,6 @@
+package com.bucea.bean;
+
+public class Award2 {
+	int e_id;
+	int awa_id;
+}

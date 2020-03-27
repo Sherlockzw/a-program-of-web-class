@@ -1,0 +1,18 @@
+package com.bucea.service;
+
+import java.util.ArrayList;
+
+import com.bucea.bean.Department;
+
+public interface IDepService {
+	//员工信息添加
+	public void depAdd(Department dep);
+	//员工信息删除
+	public void depDelete(int id);
+	//员工信息查询
+	public Department depFind(int id);
+	//员工信息修改
+	public void depUpdate(Department dep);
+	//员工信息显示
+	public ArrayList<Department> depShow();
+}

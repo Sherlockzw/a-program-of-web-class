@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%><!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Insert title here</title>
+        <style>
+            @import url(../css/style.css);  
+        </style>
+        <script type="text/javascript">            
+            function reBack(){
+                history.back(-1);
+            } 
+        </script>
+    </head>
+    <body>
+        <div id="dis_find">
+          	员工信息添加
+            <form action="#" method="post">
+                <table class="dep_update_ta">
+                    <tr>
+                        <td>姓名</td>
+                        <td><input type="text" class="admtxt" ></td>
+                    </tr>
+                    <tr>
+                        <td>生日</td>
+                        <td><input type="text" class="admtxt" ></td>
+                    </tr>
+                    <tr>
+                        <td>职务</td>
+                        <td><input type="text" class="admtxt" ></td>
+                    </tr>
+                    <tr>
+                        <td>入职时间</td>
+                        <td><input type="text" class="admtxt" ></td>
+                    </tr>
+                </table>
+                <input type="button" class="emp_update_btn" name="emp_add" value="添加">
+            </form>
+            <input type="button" class="buttonman5" name="return" value="返回" onclick="reBack()">
+        </div>
+    </body>
+</html>

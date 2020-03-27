@@ -1,0 +1,26 @@
+package com.bucea.dao.impl;
+
+import org.junit.Test;
+
+import com.bucea.bean.Employee;
+import com.bucea.dao.ICheDao;
+
+public class CheDaoImpl implements ICheDao {
+
+	@Test
+	public void testName() throws Exception {
+		
+		Employee Employee = login(1);
+		System.out.println(Employee.getPassword());
+	}
+	@Override
+	public Employee login(int username) {
+		String sql = "select * from employee where e_id =?";
+		try {
+			return JdbcUtils.getQueryRunner().query(sql, new BeanHandler<Employee>(Employee.class),username);
+		}catch(Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+}

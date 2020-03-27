@@ -1,0 +1,62 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%><!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Insert title here</title>
+        <style>
+            @import url(../css/style.css);  
+        </style>
+        <script type="text/javascript">            
+            function reBack(){
+                history.back(-1);
+            } 
+        </script>
+    </head>
+    <body>
+        <div id="dis_find">
+            权限分配
+            <form action="../limServlet?act=update" method="post">
+            <table class="adm" border="1">
+				<tr>
+					<td>员工号</td>
+					<td>姓名</td>
+					<td>权限</td>
+					<td>职务</td>
+				</tr>
+				<%
+						LimDaoImpl ld = new LimDaoImpl();
+						List<Employee> lims = ld.show();
+						for (int i = 0; i < lims.size(); i++) {
+							Employee lim = lims.get(i);
+					%>
+				<tr class="row<%=i % 2 + 1%>">
+					<td><%=lim.getE_id()%></td>
+					<td><%=lim.getE_name()%></td>
+					<td><%=lim.getLi_id()%></td>
+					<td><%=lim.getDuty()%></td>
+				</tr>
+				<%
+						} 
+						%>
+			</table>
+                <table>
+                    <tr>
+                        <td>需要修改的员工号</td>
+                        <td><input type="text" class="admtxt" name="e_id"></td>
+                    </tr>
+                    <tr>
+                        <td>修改的权限等级</td>
+                        <td><input type="text" class="admtxt" name="li_id"></td>
+                    </tr>    
+                    <tr>
+                        <td>修改后的职务</td>
+                        <td><input type="text" class="admtxt" name="duty"></td>
+                    </tr>                     
+                </table>
+                <input type="submit" class="dis_find_btn" name="#" value="修改">
+            </form>
+            <input type="button" class="buttonadm3" name="return" value="返回" onclick="reBack()">
+        </div>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+package com.bucea.service;
+
+import com.bucea.bean.Employee;
+import com.bucea.dao.impl.ManDaoImpl;
+
+public class ManService {
+	ManDaoImpl md = new ManDaoImpl();
+	public void empAdd(Employee emp) {
+		md.employeeAdd(emp);
+	}
+	public void empDelete(int id) {
+		md.employeeDelete(id);
+	}
+	public Employee empFind(int id) {
+		return md.employeeFind(id);
+	}
+	public void empUpdate(Employee emp) {
+		md.employeeUpdate(emp);
+	}
+}

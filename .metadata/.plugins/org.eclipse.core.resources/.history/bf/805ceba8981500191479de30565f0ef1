@@ -1,0 +1,148 @@
+package com.bucea.dao.impl;
+
+import java.sql.*;
+import java.util.*;
+import java.util.Date;
+
+import org.junit.Test;
+
+import com.bucea.bean.Employee;
+import com.bucea.util.JDBCutil;
+
+public class ManDaoImpl {
+	Connection conn = null;
+	PreparedStatement st = null;	
+	ResultSet rs = null;
+	
+	/*
+	 * @Test
+	public void test() {
+		Employee emp = new Employee();
+		emp.setBirth(new Date());
+		emp.setDuty("111");
+		emp.setE_name("222");
+		emp.setEntry_time(new Date());
+		emp.setId("111");
+		emp.setPassword("1234556");
+		employeeAdd(emp);
+	}
+	*/
+	public void employeeAdd(Employee emp) {
+		try {
+			conn = JDBCutil.getConnection();
+			String sql = "INSERT INTO employee(e_name,birth,duty,entry_time,id,password) VALUES(?,?,?,?,?,?)";
+			st = conn.prepareStatement(sql);
+			
+			java.util.Date date=new java.util.Date();
+            st.setString(1, emp.getE_name());
+            st.setDate(2, new java.sql.Date(emp.getBirth().getTime()));
+            st.setString(3, emp.getDuty());
+            st.setDate(4, new java.sql.Date(emp.getEntry_time().getTime()));
+            st.setString(5, emp.getId());
+            st.setString(6, emp.getPassword());
+            
+            st.executeUpdate();
+            
+		}catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JDBCutil.colseResource(conn, st, rs);
+        }
+	}
+	
+	
+	@Test
+	public void Test2() {
+		int id = 1012;
+		employeeDelete(id);
+	}
+	
+	public void employeeDelete(int id) {
+		try {
+			conn = JDBCutil.getConnection();
+			String sql = "DELETE FROM employee WHERE e_id = ?";
+			st = conn.prepareStatement(sql);
+            
+			st.setInt(1, id);
+			
+            st.executeUpdate();
+		}catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JDBCutil.colseResource(conn, st, rs);
+        }
+	}
+	/*
+	@Test 
+	public void Test3() {
+		Employee emp = new Employee();
+		emp.setE_id(6);
+		employeeFind(emp);
+	}
+	*/
+	public Employee employeeFind(int id) {
+		Employee emo = null;
+		try {
+			conn = JDBCutil.getConnection();
+			String sql = "SELECT e_name,birth,duty,entry_time,id,password FROM employee WHERE e_id = ?";
+			st = conn.prepareStatement(sql);
+            
+			st.setInt(1, id);
+			
+            rs = st.executeQuery();
+            emo = new Employee();
+            while(rs.next())  
+            {  
+                emo.setE_name(rs.getString(1));
+                emo.setBirth(rs.getDate(2));
+                emo.setDuty(rs.getString(3));
+                emo.setEntry_time(rs.getDate(4));
+                emo.setId(rs.getString(5));
+                emo.setPassword(rs.getString(6));
+            } 
+            System.out.println(emo.getDuty());
+		}catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JDBCutil.colseResource(conn, st, rs);
+        }
+		return emo;
+	}
+	/*
+	@Test
+	public void test() {
+		Employee emp = new Employee();
+		emp.setBirth(new Date());
+		emp.setDuty("333");
+		emp.setE_name("555");
+		emp.setEntry_time(new Date());
+		emp.setId("666");
+		emp.setPassword("1234556");
+		emp.setE_id(5);
+		employeeUpdate(emp);
+		
+	}
+	*/
+	public void employeeUpdate(Employee emp) {
+		try {
+			conn = JDBCutil.getConnection();
+			String sql = "UPDATE employee SET e_name=?,birth=?,duty=?,entry_time=?,id=? WHERE e_id=? ";
+			st = conn.prepareStatement(sql);
+			
+			java.util.Date date=new java.util.Date();
+	        st.setString(1, emp.getE_name());
+	        st.setDate(2, new java.sql.Date(emp.getBirth().getTime()));
+	        st.setString(3, emp.getDuty());
+	        st.setDate(4, new java.sql.Date(emp.getEntry_time().getTime()));
+	        st.setString(5, emp.getId());
+	        st.setInt(6, emp.getE_id());
+	        
+	        int n = st.executeUpdate();
+	        
+		}catch (SQLException e) {
+	        e.printStackTrace();
+	    }finally {
+	        JDBCutil.colseResource(conn, st, rs);
+	    }
+	}
+}

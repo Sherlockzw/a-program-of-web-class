@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Check_.java&apos; to &apos;CompanyRange1.2/src/com.bucea.bean&apos;&#x0D;&#x0A;- Original project: &apos;enterprise&apos;&#x0D;&#x0A;- Destination element: &apos;CompanyRange1.2/src/com.bucea.bean&apos;&#x0D;&#x0A;- Original element: &apos;com.bucea.bean.Check_.java&apos;" description="Copy compilation unit" destination="=CompanyRange1.2/src&lt;com.bucea.bean" element1="/src&lt;com.bucea.bean{Check_.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1547720353645" units="1" version="1.0"/>
+</session>

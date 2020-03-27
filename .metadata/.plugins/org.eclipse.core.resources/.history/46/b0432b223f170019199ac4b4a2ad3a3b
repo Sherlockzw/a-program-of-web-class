@@ -1,0 +1,7 @@
+package com.bucea.bean;
+
+public class Department {
+	String d_name;
+	String manage;
+	int d_id;
+}

@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Fri Jan 18 11:14:55 CST 2019
+org.eclipse.jst.jee.server\:CompanyRange1.2=D\:\\apache-tomcat-9.0.12\\webapps\\CompanyRange1.2
+org.eclipse.jst.jee.server\:enterprise=D\:\\apache-tomcat-9.0.12\\webapps\\enterprise

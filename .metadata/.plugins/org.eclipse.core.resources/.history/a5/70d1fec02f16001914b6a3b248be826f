@@ -1,0 +1,18 @@
+package com.bucea.dao;
+
+import java.util.List;
+
+import com.bucea.bean.Employee;
+
+public interface IManDao {
+	//增加员工信息
+	public void employeeAdd(Employee emp);
+	//删除员工信息
+	public void employeeDelete(int id);
+	//查找员工信息
+	public Employee employeeFind(int id);
+	//修改员工信息
+	public void employeeUpdate(Employee emp);
+	//输出员工信息
+	public List<Employee> employeeShow(int id);
+}

@@ -1,0 +1,60 @@
+package com.bucea.dao.impl;
+
+import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.junit.Test;
+
+import com.bucea.bean.Award;
+import com.bucea.bean.Department;
+import com.bucea.bean.Employee;
+import com.bucea.bean.Punishment;
+import com.bucea.dao.AdminDao;
+import com.bucea.util.JdbcUtils;
+
+public class IAdmin implements AdminDao {
+
+	@Test
+	public void test() {
+		int id = 5;
+		
+		delete_dep(id);
+	}
+	
+	public void add_dep(Department department) {
+		String sql = "INSERT INTO department (d_name, manager) VALUES (?,?) ";
+		try {
+			JdbcUtils.getQueryRunner().update(sql,department.getD_name(),department.getManager());
+		}catch(Exception e) {
+			throw new RuntimeException(e);
+		}	
+
+	}
+
+	@Override
+	public void delete_dep(int id) {
+		String sql = "DELETE FROM department WHERE d_id = ? ";
+		try {
+			JdbcUtils.getQueryRunner().update(sql,id);
+		}catch(Exception e) {
+			throw new RuntimeException(e);
+		}	
+	}
+
+	public void update_dep(Department department) {
+		String sql = "update department set d_name=? , manager=? where d_id=?";
+		try {
+			JdbcUtils.getQueryRunner().update(sql,department.getD_name(),department.getManager(),department.getD_id());
+		}catch(Exception e) {
+			throw new RuntimeException(e);
+		}	
+	}
+
+	public Department find_dep(int id) {
+		String sql = "select * from department where d_id =?";
+		try {
+			return JdbcUtils.getQueryRunner().query(sql, new BeanHandler<Department>(Department.class),id);
+		}catch(Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+}

@@ -1,0 +1,10 @@
+package com.bucea.dao;
+
+import java.util.ArrayList;
+
+import com.bucea.bean.Limit;
+
+public interface ILimDao {
+	public void disUpdate(Limit lim);
+	public ArrayList<Limit> show();
+}

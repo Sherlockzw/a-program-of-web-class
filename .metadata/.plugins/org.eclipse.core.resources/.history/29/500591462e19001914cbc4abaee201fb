@@ -1,0 +1,13 @@
+package com.bucea.dao;
+
+import java.util.ArrayList;
+
+import com.bucea.bean.Employee;
+import com.bucea.bean.Limit;
+
+public interface ILimDao {
+	//权限信息修改
+	public int disUpdate(Employee emp);
+	//权限信息显示
+	public ArrayList<Limit> show();
+}

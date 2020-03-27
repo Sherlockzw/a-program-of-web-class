@@ -1,0 +1,39 @@
+package com.bucea.dao.impl;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.bucea.bean.Limit;
+import com.bucea.util.JDBCutil;
+
+public class LimDaoImpl {
+	public void disUpdate(Limit lim) {
+		Connection conn = null;
+		PreparedStatement st = null;	
+		ResultSet rs = null;
+		try {
+			conn = JDBCutil.getConnection();
+			String sql = "UPDATE employee SET e_name=?,birth=?,duty=?,entry_time=?,id=?,password=? WHERE e_id=? ";
+			st = conn.prepareStatement(sql);
+
+			java.util.Date date=new java.util.Date();
+			st.setString(1, emp.getE_name());
+			st.setDate(2, new java.sql.Date(emp.getBirth().getTime()));
+			st.setString(3, emp.getDuty());
+			st.setDate(4, new java.sql.Date(emp.getEntry_time().getTime()));
+			st.setString(5, emp.getId());
+			st.setString(6, emp.getPassword());
+			st.setInt(7, emp.getE_id());
+
+			int n = st.executeUpdate();
+			System.out.println(emp.getE_id());
+
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCutil.colseResource(conn, st, rs);
+		}
+	}
+}

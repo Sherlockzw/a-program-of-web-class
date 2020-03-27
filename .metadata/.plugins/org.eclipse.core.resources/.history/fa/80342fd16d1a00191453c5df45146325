@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Insert title here</title>
+        <style>
+            @import url(css/style.css);        
+        </style>
+        <script type="text/javascript">
+            function department(){
+                window.location="admin/dis_find.jsp";
+            }            
+            function reBack(){
+                history.back(-1);
+            } 
+        </script>
+    </head>
+    <body>
+        <div id="distribution">
+            权限信息
+            <table class="adm" border="1">
+                <tr>
+                    <td>员工号</td><td>姓名</td><td>权限</td>
+                </tr>
+                <tr>
+                    <td>1601</td><td>张三</td><td>1</td>
+                </tr>             
+            </table>
+            <table class="adm2">
+                <tr><td><input type="button" class="button"name="distribution" value="修改权限" onclick="department()"></tr></td>
+                <tr><td><input type="button" class="button"name="return" value="返回" onclick="reBack()"></tr></td>
+            </table>
+        </div>
+    </body>
+</html>

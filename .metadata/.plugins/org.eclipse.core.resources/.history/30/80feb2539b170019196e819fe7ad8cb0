@@ -1,0 +1,17 @@
+package com.bucea.dao;
+
+import java.util.ArrayList;
+
+import com.bucea.bean.Department;
+public interface IDepDao {
+	//员工信息添加
+	public void departmentAdd(Department emp);
+	//员工信息删除
+	public void departmentDelete(int id);
+	//员工信息查找
+	public Department employeeFind(int id);
+	//员工信息修改
+	public void DepartmentUpdate(Department emp);
+	//员工信息显示
+	public ArrayList<Department> DepartmentShow();
+}

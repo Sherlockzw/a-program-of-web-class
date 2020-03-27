@@ -1,0 +1,5 @@
+package com.bucea.dao;
+
+public interface IDepDao {
+
+}

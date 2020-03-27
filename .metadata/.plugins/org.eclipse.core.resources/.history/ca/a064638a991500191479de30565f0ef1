@@ -1,0 +1,5 @@
+package com.bucea.service;
+
+public interface IManService {
+
+}
